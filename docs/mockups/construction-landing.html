@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildRight Construction | Commercial & Residential Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #31393C;
+            --primary-yellow: #FCDD3F;
+            --accent-blue: #2176FF;
+            --accent-orange: #F79824;
+            --light-gray: #C6D8DE;
+            --mid-gray: #666;
+            --white: #EFFBFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Serif 4', serif;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-yellow);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary-yellow);
+            color: var(--primary-dark);
+            padding: 0.75rem 1.8rem;
+            border: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-orange);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            background: linear-gradient(135deg, rgba(0, 78, 137, 0.9), rgba(26, 26, 26, 0.85)), 
+                        url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23f4f4f4"/><path d="M0 0L50 50M50 50L100 0M50 50L100 100M50 50L0 100" stroke="%23e0e0e0" stroke-width="0.5"/></svg>');
+            background-size: cover, 40px 40px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15), transparent);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero h1 span {
+            color: var(--primary-yellow);
+            display: block;
+            font-size: 3.5rem;
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            color: var(--light-gray);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .primary-btn {
+            background: var(--primary-yellow);
+            color: var(--primary-dark);
+            padding: 1.1rem 2.5rem;
+            border: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary-btn:hover {
+            background: var(--accent-orange);
+            transform: translateY(-3px);
+            color: var(--white);
+            /* box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3); */
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--white);
+            padding: 1.1rem 2.5rem;
+            border: 2px solid var(--white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .secondary-btn:hover {
+            background: var(--white);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Trust Indicators */
+        .trust-bar {
+            background: var(--primary-dark);
+            padding: 3rem 2rem;
+            border-top: 3px solid var(--primary-yellow);
+        }
+
+        .trust-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .trust-item {
+            animation: fadeIn 1s ease-out both;
+        }
+
+        .trust-item:nth-child(1) { animation-delay: 0.1s; }
+        .trust-item:nth-child(2) { animation-delay: 0.2s; }
+        .trust-item:nth-child(3) { animation-delay: 0.3s; }
+        .trust-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .trust-icon {
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+        }
+
+        .trust-item h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .trust-item p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--mid-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--light-gray);
+            padding: 2.5rem 2rem;
+            border-left: 5px solid var(--accent-blue);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            border-left-color: var(--primary-yellow);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .service-card p {
+            color: var(--mid-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom, var(--light-gray), var(--white));
+        }
+
+        .process-timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary-yellow);
+            transform: translateX(-50%);
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .process-step:nth-child(even) .step-content {
+            grid-column: 2;
+        }
+
+        .process-step:nth-child(even) .step-number {
+            right: auto;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .step-content {
+            background: var(--white);
+            padding: 2rem;
+            border: 2px solid var(--light-gray);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            right: 50%;
+            top: 50%;
+            transform: translate(50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--primary-yellow);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            z-index: 2;
+            border: 4px solid var(--white);
+        }
+
+        .step-content h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .step-content p {
+            color: var(--mid-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 6rem 2rem;
+            background: var(--accent-blue);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .final-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--light-gray);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--mid-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero h1 span {
+                font-size: 2.5rem;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-step {
+                grid-template-columns: 1fr;
+                padding-left: 80px;
+            }
+
+            .process-step:nth-child(even) .step-content {
+                grid-column: 1;
+            }
+
+            .step-number {
+                left: 30px !important;
+                right: auto !important;
+                transform: translate(-50%, -50%) !important;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .final-cta h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">BUILD<span>RIGHT</span></div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Our Process</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cta-button">Free Consultation</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Building Excellence
+                <span>One Project at a Time</span>
+            </h1>
+            <p>Commercial and residential construction with impeccable service, complete transparency, and a 2-year warranty on all labor. Your vision, built right.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="primary-btn">Start Your Project</a>
+                <a href="#portfolio" class="secondary-btn">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item">
+                <div class="trust-icon">2Y</div>
+                <h3>Warranty Guarantee</h3>
+                <p>Industry-leading 2-year labor warranty on every project</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">24/7</div>
+                <h3>Direct Access</h3>
+                <p>Work directly with your project manager throughout</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">100%</div>
+                <h3>Full Transparency</h3>
+                <p>Daily updates and complete project documentation</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">✓</div>
+                <h3>Licensed & Insured</h3>
+                <p>Fully certified and compliant with all regulations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <div class="section-label">What We Do</div>
+            <h2>Our Services</h2>
+            <p>From concept to completion, we handle every aspect of your construction project with precision and care.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Commercial Renovations</h3>
+                <p>Transform your business space with minimal disruption. We specialize in retail, office, and industrial renovations that keep your operations running smoothly.</p>
+            </div>
+            <div class="service-card">
+                <h3>Residential Renovations</h3>
+                <p>Breathe new life into your home. From kitchen and bathroom remodels to complete home makeovers, we bring your vision to reality.</p>
+            </div>
+            <div class="service-card">
+                <h3>Home Additions</h3>
+                <p>Expand your living space seamlessly. We design and build additions that blend perfectly with your existing home structure and style.</p>
+            </div>
+            <div class="service-card">
+                <h3>Custom Modifications</h3>
+                <p>Adapt your space to your changing needs. Whether accessibility upgrades or layout changes, we make your space work for you.</p>
+            </div>
+            <div class="service-card">
+                <h3>New Construction</h3>
+                <p>Build your dream from the ground up. We manage every phase of new construction projects with meticulous attention to detail.</p>
+            </div>
+            <div class="service-card">
+                <h3>Project Management</h3>
+                <p>Expert oversight from start to finish. Your dedicated project manager ensures every detail meets our exacting standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="section-header">
+            <div class="section-label">How We Work</div>
+            <h2>Our Process</h2>
+            <p>A proven methodology that ensures your project stays on budget, on schedule, and exceeds expectations.</p>
+        </div>
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Initial Consultation</h3>
+                    <p>Meet with your dedicated project manager to discuss your vision, requirements, and goals. We'll review site conditions and gather all necessary documentation including blueprints and permits.</p>
+                </div>
+                <div class="step-number">1</div>
+            </div>
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Detailed Proposal</h3>
+                    <p>Receive a comprehensive budget breakdown and timeline with clearly marked milestones and deliverables. No hidden fees, no surprises—just complete transparency.</p>
+                </div>
+                <div class="step-number">2</div>
+            </div>
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Active Construction</h3>
+                    <p>Daily 15-minute optional updates and mandatory weekly progress reports keep you informed. We address concerns immediately and adapt to any changes professionally.</p>
+                </div>
+                <div class="step-number">3</div>
+            </div>
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Milestone Payments</h3>
+                    <p>Pay only when milestones are completed and reviewed. This ensures quality at every stage and keeps the project moving forward with confidence.</p>
+                </div>
+                <div class="step-number">4</div>
+            </div>
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Project Completion</h3>
+                    <p>Receive comprehensive documentation including before, during, and after photos—even of work hidden behind walls. Plus detailed warranty coverage explanation.</p>
+                </div>
+                <div class="step-number">5</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="contact">
+        <div class="final-cta-content">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Schedule a free consultation with our project manager. Let's discuss your vision and create a detailed plan to bring it to life.</p>
+            <button class="primary-btn" style="background: var(--white); color: var(--accent-blue);">Get Your Free Consultation</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>BuildRight Construction</h4>
+                <p>Building excellence with transparency, quality craftsmanship, and customer service that sets the industry standard.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#services">Services</a>
+                <a href="#process">Our Process</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#about">About Us</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Phone: (555) 123-4567</p>
+                <p>Email: info@buildright.com</p>
+                <p>Hours: Mon-Fri 7AM-6PM</p>
+            </div>
+            <div class="footer-section">
+                <h4>Service Areas</h4>
+                <p>Serving the greater metropolitan area and surrounding communities</p>
+                <a href="#contact">Request Service Area Info</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BuildRight Construction. All rights reserved. | Licensed & Insured | Privacy Policy</p>
+        </div>
+    </footer>
+</body>
+</html>
