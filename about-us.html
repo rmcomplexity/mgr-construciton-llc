@@ -32,13 +32,16 @@
 
         /* Navigation */
         nav {
-            position: fixed;
             top: 0;
             width: 100%;
             background: rgba(26, 26, 26, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 3px solid var(--primary-yellow);
+        }
+
+        nav.open {
+            position: fixed;
         }
 
         .nav-container {
@@ -149,7 +152,6 @@
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
             padding: 6rem 2rem;
             background: linear-gradient(135deg, rgba(0, 78, 137, 0.9), rgba(26, 26, 26, 0.85)),
                         url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23f4f4f4"/><path d="M0 0L50 50M50 50L100 0M50 50L100 100M50 50L0 100" stroke="%23e0e0e0" stroke-width="0.5"/></svg>');
@@ -696,7 +698,7 @@
                 <li><a href="/mgr-construciton-llc/portfolio.html">Portfolio</a></li>
                 <li><a href="/mgr-construciton-llc/about-us.html">About</a></li>
                 <li><a href="/mgr-construciton-llc/testimonials.html">Testimonials</a></li>
-                <li><a href="/mgr-construciton-llc/#contact">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="cta-button nav-cta">Free Consultation</button>
             <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -900,7 +902,7 @@
             <div class="footer-section">
                 <h4>Service Areas</h4>
                 <p>Serving the greater metropolitan area and surrounding communities</p>
-                <a href="/mgr-construciton-llc/#contact">Request Service Area Info</a>
+                <a href="#contact">Request Service Area Info</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -911,10 +913,12 @@
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
+        const nav = document.querySelector('nav');
 
         hamburger.addEventListener('click', () => {
             const isOpen = navLinks.classList.toggle('open');
             hamburger.classList.toggle('active');
+            nav.classList.toggle('open');
             hamburger.setAttribute('aria-expanded', isOpen);
             document.body.style.overflow = isOpen ? 'hidden' : '';
         });
