@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MGR Construction LLC | About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #31393C;
+            --primary-yellow: #FCDD3F;
+            --accent-blue: #2176FF;
+            --accent-orange: #F79824;
+            --light-gray: #C6D8DE;
+            --mid-gray: #666;
+            --white: #EFFBFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Serif 4', serif;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary-yellow);
+            color: var(--primary-dark);
+            padding: 0.75rem 1.8rem;
+            border: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-orange);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 78, 137, 0.9), rgba(26, 26, 26, 0.85)),
+                        url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23f4f4f4"/><path d="M0 0L50 50M50 50L100 0M50 50L100 100M50 50L0 100" stroke="%23e0e0e0" stroke-width="0.5"/></svg>');
+            background-size: cover, 40px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15), transparent);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-yellow);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--light-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Story Section */
+        .story {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .story-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .story-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .story h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .story-text {
+            font-size: 1.15rem;
+            color: var(--mid-gray);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text:first-of-type {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            font-weight: 400;
+        }
+
+        /* Problem / Solution */
+        .problem-solution {
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, var(--light-gray), var(--white));
+        }
+
+        .ps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .ps-card {
+            padding: 3rem;
+            position: relative;
+        }
+
+        .ps-card.problem {
+            background: var(--primary-dark);
+        }
+
+        .ps-card.solution {
+            background: var(--accent-blue);
+        }
+
+        .ps-card i.ps-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ps-card.problem i.ps-icon {
+            color: var(--accent-orange);
+        }
+
+        .ps-card.solution i.ps-icon {
+            color: var(--primary-yellow);
+        }
+
+        .ps-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .ps-list {
+            list-style: none;
+        }
+
+        .ps-list li {
+            color: var(--light-gray);
+            font-size: 1rem;
+            line-height: 1.8;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .ps-list li i {
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+        }
+
+        .ps-card.problem .ps-list li i {
+            color: var(--accent-orange);
+        }
+
+        .ps-card.solution .ps-list li i {
+            color: var(--primary-yellow);
+        }
+
+        /* Values */
+        .values {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .values-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .values-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .values-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .values-header p {
+            font-size: 1.15rem;
+            color: var(--mid-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .value-card {
+            background: var(--light-gray);
+            padding: 2.5rem 2rem;
+            border-left: 5px solid var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            border-left-color: var(--primary-yellow);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-card i {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .value-card:hover i {
+            color: var(--accent-orange);
+        }
+
+        .value-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            color: var(--mid-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Warranty Badge */
+        .warranty {
+            padding: 5rem 2rem;
+            background: var(--primary-dark);
+            text-align: center;
+        }
+
+        .warranty-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .warranty-badge {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            border: 5px solid var(--accent-orange);
+        }
+
+        .warranty-badge i {
+            font-size: 3rem;
+            color: var(--primary-dark);
+        }
+
+        .warranty h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .warranty h2 span {
+            color: var(--primary-yellow);
+        }
+
+        .warranty p {
+            font-size: 1.15rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Experience */
+        .experience {
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, var(--light-gray), var(--white));
+        }
+
+        .experience-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .experience h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .experience p {
+            font-size: 1.15rem;
+            color: var(--mid-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-badge {
+            text-align: center;
+        }
+
+        .exp-badge i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.8rem;
+        }
+
+        .exp-badge .exp-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .exp-badge .exp-label {
+            font-size: 0.95rem;
+            color: var(--mid-gray);
+        }
+
+        .primary-btn {
+            background: var(--primary-yellow);
+            color: var(--primary-dark);
+            padding: 1.1rem 2.5rem;
+            border: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary-btn:hover {
+            background: var(--accent-orange);
+            transform: translateY(-3px);
+            color: var(--white);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 6rem 2rem;
+            background: var(--accent-blue);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .final-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--light-gray);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--mid-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(26, 26, 26, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 1000;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.4rem;
+                font-family: 'Oswald', sans-serif;
+                letter-spacing: 2px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .ps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .final-cta h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="construction-landing.html" class="logo">MGR CONSTRUCTION <span>LLC</span></a>
+            <ul class="nav-links">
+                <li><a href="services.html">Services</a></li>
+                <li><a href="our-process.html">Our Process</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about-us.html">About</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cta-button nav-cta">Free Consultation</button>
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>About <span>Us</span></h1>
+            <p>MGR Construction LLC — Building your vision exactly how you want it, within budget, with complete transparency at every step.</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story">
+        <div class="story-container">
+            <div class="story-label">Our Story</div>
+            <h2>Why We're Different</h2>
+            <p class="story-text">Worried about construction projects where crews disappear, the project goes out of budget or takes longer than expected to finish, or projects where it's not clear what's behind the walls?</p>
+            <p class="story-text">We can help build your vision exactly how you want it within budget and with a clear timeline. We created a process where customer communication and transparency is front and center. No more stressing about what is going on in the project or if all the infrastructure work (what's left behind the walls) was done correctly.</p>
+            <p class="story-text">We deliver clear documentation of every step done and keep you in the loop with daily (optional) and weekly updates and reports.</p>
+        </div>
+    </section>
+
+    <!-- Problem / Solution -->
+    <section class="problem-solution">
+        <div class="ps-container">
+            <div class="ps-card problem">
+                <i class="fa-solid fa-triangle-exclamation ps-icon"></i>
+                <h3>Common Industry Problems</h3>
+                <ul class="ps-list">
+                    <li>
+                        <i class="fa-solid fa-xmark"></i>
+                        <span>Crews disappear mid-project with no communication</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-xmark"></i>
+                        <span>Projects go over budget with surprise costs</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-xmark"></i>
+                        <span>Timelines stretch far beyond original estimates</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-xmark"></i>
+                        <span>No visibility into infrastructure work behind walls</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-xmark"></i>
+                        <span>Lack of documentation and accountability</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="ps-card solution">
+                <i class="fa-solid fa-circle-check ps-icon"></i>
+                <h3>The MGR Construction Way</h3>
+                <ul class="ps-list">
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        <span>Dedicated project manager as your single point of contact</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        <span>Clear budget with milestone-based payments</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        <span>Defined timeline with weekly progress reports</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        <span>Complete photo documentation including behind-wall work</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        <span>Daily optional updates and full transparency</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+        <div class="values-container">
+            <div class="values-header">
+                <h2>Our Core Values</h2>
+                <p>Every project we take on is guided by these principles.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fa-solid fa-eye"></i>
+                    <h3>Transparency</h3>
+                    <p>Complete visibility into every aspect of your project — budget, timeline, and workmanship. No hidden costs, no surprises.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-comments"></i>
+                    <h3>Communication</h3>
+                    <p>Daily optional check-ins and mandatory weekly reports ensure you always know exactly where your project stands.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-medal"></i>
+                    <h3>Quality</h3>
+                    <p>We never cut corners. Every phase is documented and reviewed to ensure the highest standards of craftsmanship.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-handshake"></i>
+                    <h3>Integrity</h3>
+                    <p>We stand behind our work with a 2-year labor warranty. If something isn't right, we make it right.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-camera"></i>
+                    <h3>Documentation</h3>
+                    <p>Before, during, and after photos — including work hidden behind walls — give you complete confidence in our workmanship.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <h3>Accountability</h3>
+                    <p>Your dedicated project manager is personally responsible for your project's success from start to finish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warranty -->
+    <section class="warranty">
+        <div class="warranty-container">
+            <div class="warranty-badge">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h2>Industry-Leading <span>2-Year Warranty</span></h2>
+            <p>We offer a 2-year warranty on the labor for all of our projects. This isn't just a promise — it's our guarantee that we stand behind every nail, every joint, and every finish.</p>
+            <p>If anything doesn't meet your expectations within the warranty period, we'll come back and make it right at no additional cost.</p>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience">
+        <div class="experience-container">
+            <h2>Experience You Can Trust</h2>
+            <p>Our crews have 10+ years of construction and renovation experience in both residential and commercial real estate. We bring seasoned expertise to every project, big or small.</p>
+            <div class="experience-badges">
+                <div class="exp-badge">
+                    <i class="fa-solid fa-helmet-safety"></i>
+                    <div class="exp-number">10+</div>
+                    <div class="exp-label">Years Experience</div>
+                </div>
+                <div class="exp-badge">
+                    <i class="fa-solid fa-building"></i>
+                    <div class="exp-number">Commercial</div>
+                    <div class="exp-label">Renovations</div>
+                </div>
+                <div class="exp-badge">
+                    <i class="fa-solid fa-house"></i>
+                    <div class="exp-number">Residential</div>
+                    <div class="exp-label">Renovations</div>
+                </div>
+                <div class="exp-badge">
+                    <i class="fa-solid fa-certificate"></i>
+                    <div class="exp-number">Licensed</div>
+                    <div class="exp-label">&amp; Insured</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="contact">
+        <div class="final-cta-content">
+            <h2>Let's Build Something Great Together</h2>
+            <p>Schedule a free consultation and experience the MGR Construction difference. Transparent, on-budget, and built right.</p>
+            <button class="primary-btn" style="background: var(--white); color: var(--accent-blue);">Get Your Free Consultation</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MGR Construction LLC</h4>
+                <p>Building excellence with transparency, quality craftsmanship, and customer service that sets the industry standard.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="services.html">Services</a>
+                <a href="our-process.html">Our Process</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="about-us.html">About Us</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Phone: (555) 123-4567</p>
+                <p>Email: info@mgrconstruction.com</p>
+                <p>Hours: Mon-Fri 7AM-6PM</p>
+            </div>
+            <div class="footer-section">
+                <h4>Service Areas</h4>
+                <p>Serving the greater metropolitan area and surrounding communities</p>
+                <a href="#contact">Request Service Area Info</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MGR Construction LLC. All rights reserved. | Licensed & Insured | Privacy Policy</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+</body>
+</html>

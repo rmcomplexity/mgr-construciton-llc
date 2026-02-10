@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BuildRight Construction | Commercial & Residential Excellence</title>
+    <title>MGR Construction LLC | Commercial & Residential Excellence</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -53,12 +53,12 @@
             font-family: 'Oswald', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--white);
+            color: var(--primary-yellow);
             letter-spacing: 1px;
         }
 
         .logo span {
-            color: var(--primary-yellow);
+            color: var(--white);
         }
 
         .nav-links {
@@ -558,10 +558,72 @@
             font-size: 0.9rem;
         }
 
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
             .nav-links {
                 display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(26, 26, 26, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 1000;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.4rem;
+                /* font-family: 'Oswald', sans-serif; */
+                letter-spacing: 2px;
             }
 
             .hero h1 {
@@ -605,7 +667,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">BUILD<span>RIGHT</span></div>
+            <div class="logo">MGR CONSTRUCTION <span>LLC</span></div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#process">Our Process</a></li>
@@ -614,7 +676,11 @@
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="cta-button">Free Consultation</button>
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </nav>
 
@@ -627,7 +693,7 @@
             </h1>
             <p>Commercial and residential construction with impeccable service, complete transparency, and a 2-year warranty on all labor. Your vision, built right.</p>
             <div class="hero-buttons">
-                <a href="#contact" class="primary-btn">Start Your Project</a>
+                <a href="#contact" class="primary-btn">Free Consultation</a>
                 <a href="#portfolio" class="secondary-btn">View Our Work</a>
             </div>
         </div>
@@ -753,7 +819,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h4>BuildRight Construction</h4>
+                <h4>MGR Construction LLC</h4>
                 <p>Building excellence with transparency, quality craftsmanship, and customer service that sets the industry standard.</p>
             </div>
             <div class="footer-section">
@@ -766,7 +832,7 @@
             <div class="footer-section">
                 <h4>Contact</h4>
                 <p>Phone: (555) 123-4567</p>
-                <p>Email: info@buildright.com</p>
+                <p>Email: info@mgrconstruction.com</p>
                 <p>Hours: Mon-Fri 7AM-6PM</p>
             </div>
             <div class="footer-section">
@@ -776,8 +842,29 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 BuildRight Construction. All rights reserved. | Licensed & Insured | Privacy Policy</p>
+            <p>&copy; 2026 MGR Construction LLC. All rights reserved. | Licensed & Insured | Privacy Policy</p>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
 </body>
 </html>
